@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <h1>Welcome to my text analyzer <br> Enter your text here </h1>
+    <form action="/analyze" method="GET">
+        <textarea name="text" 
+            style="margin: 0px;border-color: coral;border-width: 5px; width: 988px; height: 152px;"></textarea>
+        <br>
+        <input type="checkbox" name="removePunc"> Remove puncation
+        <br>
+        <input type="checkbox" name="upperCase"> UPPERCASE
+        <br>
+        <input type="checkbox" name="removeNewLine"> Remove new line
+        <br>
+        <input type="checkbox" name="removeSpaces"> Remove extra spaces
+        <br>
+        <input type="checkbox" name="charCount"> Count all Characters
+        <br>
+        <input type="checkbox" name="noPuncUppercase"> Remove puncations and in upperCase
+        <br>
+        <input type="checkbox" name="noPuncLowercase"> Remove puncations and in lowerCase
+        <br>
+        <button type="submit">Text Analyzer</button>
+
+    </form>
+
+
+
+</body>
+
+</html>

@@ -28,7 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
 
-    '0.0.0.0'
+    '0.0.0.0',
+    'text-analyzer-1.herokuapp.com',
     'the-yogify.herokuapp.com',
     '127.0.0.1'
 ]

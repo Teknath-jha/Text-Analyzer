@@ -19,55 +19,52 @@ def analyze(request):
     removePunc=request.POST.get('removePunc','off')
     upperCase=request.POST.get('upperCase','off')
     removeNewLine=request.POST.get('removeNewLine','off')
-    charCount=request.POST.get('charCount','off')
     removeSpaces=request.POST.get('removeSpaces','off')
     
     puncations='''-_~`}{[]''"";:*/+=\|?/><,.!@#$%^&*()'''
 
     # Analyze text
     if removePunc == "on":
-        
         analyzed=""
         for char in djText:
             if char not in puncations:
                 analyzed=analyzed+char
         
         params={'purpose':'Remove Puncations','analyzed_text':analyzed}
-        return render(request,'analyze.html',params)
-    elif(upperCase == "on"):
+        djText=analyzed
+        # return render(request,'analyze.html',params)
+
+    if(upperCase == "on"):
         analyzed=""
         for char in djText:
             analyzed=analyzed+char.upper()
             
         params={'purpose':'Uppercase ','analyzed_text':analyzed}
-        return render(request,'analyze.html',params)
+        djText=analyzed
+        # return render(request,'analyze.html',params)
 
-    elif(removeNewLine == "on"):
+    if(removeNewLine == "on"):
         analyzed=""
         for char in djText:
             if char != '\n' and char !='\r':
                 analyzed=analyzed+char
-            
         params={'purpose':'Remove new line ','analyzed_text':analyzed}
-        return render(request,'analyze.html',params)
+        djText=analyzed
+        # return render(request,'analyze.html',params)
 
-    elif(charCount == "on"):
-        analyzed=len(djText)
-        analyzed='Length of string  :  '+str(analyzed)
-        params={'purpose':'Length os given text  ','analyzed_text':analyzed}
-        return render(request,'analyze.html',params)
-    elif(removeSpaces == "on"):
+    if(removeSpaces == "on"):
         analyzed=""
         for index,char in enumerate(djText):
             if not(djText[index] == " " and djText[index] == " "):
                 analyzed=analyzed+djText[index]
         params={'purpose':'Remove extra spaces  ','analyzed_text':analyzed}
-        return render(request,'analyze.html',params)
+        djText=analyzed
+        # return render(request,'analyze.html',params)
 
-    else:
+    if(removePunc != "on" and upperCase != "on" and  removeNewLine != "on" and removeSpaces != "on"):
         return HttpResponse(" Error  <br> <a href='/'>  Back </a>") 
 
-    
+    return render(request,'analyze.html',params)
 
 
 

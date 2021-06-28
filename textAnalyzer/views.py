@@ -15,15 +15,13 @@ def about(request):
 def analyze(request):
    
     # To get text from form 
-    djText=request.GET.get('text','default')
-    removePunc=request.GET.get('removePunc','off')
-    upperCase=request.GET.get('upperCase','off')
-    removeNewLine=request.GET.get('removeNewLine','off')
-    charCount=request.GET.get('charCount','off')
-    removeSpaces=request.GET.get('removeSpaces','off')
-    noPuncUppercase=request.GET.get('noPuncUppercase','off')
-    noPuncLowercase=request.GET.get('noPuncLowercase','off')
- 
+    djText=request.POST.get('text','default')
+    removePunc=request.POST.get('removePunc','off')
+    upperCase=request.POST.get('upperCase','off')
+    removeNewLine=request.POST.get('removeNewLine','off')
+    charCount=request.POST.get('charCount','off')
+    removeSpaces=request.POST.get('removeSpaces','off')
+    
     puncations='''-_~`}{[]''"";:*/+=\|?/><,.!@#$%^&*()'''
 
     # Analyze text
@@ -47,7 +45,7 @@ def analyze(request):
     elif(removeNewLine == "on"):
         analyzed=""
         for char in djText:
-            if char != '\n':
+            if char != '\n' and char !='\r':
                 analyzed=analyzed+char
             
         params={'purpose':'Remove new line ','analyzed_text':analyzed}
@@ -62,21 +60,7 @@ def analyze(request):
         analyzed=""
         for index,char in enumerate(djText):
             if not(djText[index] == " " and djText[index] == " "):
-                analyzed=analyzed+djText[index];
-        params={'purpose':'Remove extra spaces  ','analyzed_text':analyzed}
-        return render(request,'analyze.html',params)
-    elif(noPuncUppercase == "on"):
-        analyzed=""
-        for char in djText:
-            if char not in puncations:
-                analyzed=analyzed+char.upper()
-        params={'purpose':'Remove extra spaces  ','analyzed_text':analyzed}
-        return render(request,'analyze.html',params)
-    elif(noPuncLowercase == "on"):
-        analyzed=""
-        for char in djText:
-            if char not in puncations:
-                analyzed=analyzed+char.lower()
+                analyzed=analyzed+djText[index]
         params={'purpose':'Remove extra spaces  ','analyzed_text':analyzed}
         return render(request,'analyze.html',params)
 

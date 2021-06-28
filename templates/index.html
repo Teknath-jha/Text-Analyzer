@@ -53,7 +53,7 @@
 
     <div class="container">
 
-        <form  action="/analyze" method="GET">
+        <form  action="/analyze/" method="post" >{%  csrf_token %}
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Enter your text : </label>
                 <textarea class="form-control"  name="text" id="exampleFormControlTextarea1" rows="9"></textarea>
@@ -67,7 +67,7 @@
                 <label class="custom-control-label" for="customSwitch2">Remove new line</label>
             </div>
             <div class="custom-control custom-switch">
-                <input type="checkbox" ame="removeSpaces" class="custom-control-input" id="customSwitch3">
+                <input type="checkbox" name="removeSpaces" class="custom-control-input" id="customSwitch3">
                 <label class="custom-control-label" for="customSwitch3">Remove extra spaces</label>
             </div>
             <div class="custom-control custom-switch">

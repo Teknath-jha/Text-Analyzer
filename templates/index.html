@@ -1,40 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Text Utils</title>
 </head>
 
 <body>
 
-    <h1>Welcome to my text analyzer <br> Enter your text here </h1>
-    <form action="/analyze" method="GET">
-        <textarea name="text" 
-            style="margin: 0px;border-color: coral;border-width: 5px; width: 988px; height: 152px;"></textarea>
-        <br>
-        <input type="checkbox" name="removePunc"> Remove puncation
-        <br>
-        <input type="checkbox" name="upperCase"> UPPERCASE
-        <br>
-        <input type="checkbox" name="removeNewLine"> Remove new line
-        <br>
-        <input type="checkbox" name="removeSpaces"> Remove extra spaces
-        <br>
-        <input type="checkbox" name="charCount"> Count all Characters
-        <br>
-        <input type="checkbox" name="noPuncUppercase"> Remove puncations and in upperCase
-        <br>
-        <input type="checkbox" name="noPuncLowercase"> Remove puncations and in lowerCase
-        <br>
-        <button type="submit">Text Analyzer</button>
+    <!-- ================================   Nav bar ============================================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">TextUtils</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    </form>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active ">
+                    <a class="nav-link" href="#">About us</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Contact us </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>TextUtils</strong> With your text you can do all mentioned operations 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <!-- ================================   Nav bar  End  ============================================== -->
+
+
+    <div class="container">
+
+        <form  action="/analyze" method="GET">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Enter your text : </label>
+                <textarea class="form-control"  name="text" id="exampleFormControlTextarea1" rows="9"></textarea>
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="removePunc" class="custom-control-input" id="customSwitch1">
+                <label class="custom-control-label" for="customSwitch1"> Remove puncation</label>
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="removeNewLine" class="custom-control-input" id="customSwitch2">
+                <label class="custom-control-label" for="customSwitch2">Remove new line</label>
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" ame="removeSpaces" class="custom-control-input" id="customSwitch3">
+                <label class="custom-control-label" for="customSwitch3">Remove extra spaces</label>
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="charCount" class="custom-control-input" id="customSwitch4">
+                <label class="custom-control-label" for="customSwitch4">Count all Characters</label>
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="upperCase" class="custom-control-input" id="customSwitch5">
+                <label class="custom-control-label" for="customSwitch5">UPPERCASE</label>
+            </div>
+            <button type="submit" class="btn btn-dark">Text Analyzer</button>
+
+        </form>
+    </div>
 
 
 
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

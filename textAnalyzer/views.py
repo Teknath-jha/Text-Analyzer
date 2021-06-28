@@ -21,7 +21,9 @@ def analyze(request):
     removeNewLine=request.GET.get('removeNewLine','off')
     charCount=request.GET.get('charCount','off')
     removeSpaces=request.GET.get('removeSpaces','off')
-    
+    noPuncUppercase=request.GET.get('noPuncUppercase','off')
+    noPuncLowercase=request.GET.get('noPuncLowercase','off')
+ 
     puncations='''-_~`}{[]''"";:*/+=\|?/><,.!@#$%^&*()'''
 
     # Analyze text
@@ -63,7 +65,20 @@ def analyze(request):
                 analyzed=analyzed+djText[index];
         params={'purpose':'Remove extra spaces  ','analyzed_text':analyzed}
         return render(request,'analyze.html',params)
-
+    elif(noPuncUppercase == "on"):
+        analyzed=""
+        for char in djText:
+            if char not in puncations:
+                analyzed=analyzed+char.upper()
+        params={'purpose':'Remove extra spaces  ','analyzed_text':analyzed}
+        return render(request,'analyze.html',params)
+    elif(noPuncLowercase == "on"):
+        analyzed=""
+        for char in djText:
+            if char not in puncations:
+                analyzed=analyzed+char.lower()
+        params={'purpose':'Remove extra spaces  ','analyzed_text':analyzed}
+        return render(request,'analyze.html',params)
 
     else:
         return HttpResponse(" Error  <br> <a href='/'>  Back </a>") 
